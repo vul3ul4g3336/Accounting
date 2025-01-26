@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{351C2C9F-E3BD-4221-A56C-456A7EE31A3C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>記帳</RootNamespace>
+    <AssemblyName>記帳</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSV_Library">
+      <HintPath>..\..\CSV_Library\CSV_Library\bin\Debug\CSV_Library.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AddressAttribute.cs" />
+    <Compile Include="Attributes\AttributeType.cs" />
+    <Compile Include="Attributes\ComboBoxColumnAttribute.cs" />
+    <Compile Include="Attributes\HideAttribute.cs" />
+    <Compile Include="Attributes\ImageColumnAttribute.cs" />
+    <Compile Include="Extension.cs" />
+    <Compile Include="FormBox.cs" />
+    <Compile Include="Forms\PictureDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PictureDialog.Designer.cs">
+      <DependentUpon>PictureDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\圖表分析.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\圖表分析.Designer.cs">
+      <DependentUpon>圖表分析.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\記一筆.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\記一筆.Designer.cs">
+      <DependentUpon>記一筆.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\記帳本.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\記帳本.Designer.cs">
+      <DependentUpon>記帳本.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageCompressionUtility.cs" />
+    <Compile Include="Models\DataModel.cs" />
+    <Compile Include="Models\RecordModel.cs" />
+    <Compile Include="NavBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NavBar.Designer.cs">
+      <DependentUpon>NavBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\帳本分析.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\帳本分析.Designer.cs">
+      <DependentUpon>帳本分析.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs" />
+    <EmbeddedResource Include="Forms\PictureDialog.resx">
+      <DependentUpon>PictureDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\圖表分析.resx">
+      <DependentUpon>圖表分析.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\帳本分析.resx">
+      <DependentUpon>帳本分析.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\記一筆.resx">
+      <DependentUpon>記一筆.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\記帳本.resx">
+      <DependentUpon>記帳本.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavBar.resx">
+      <DependentUpon>NavBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
