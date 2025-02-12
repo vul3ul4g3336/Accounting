@@ -9,7 +9,7 @@ namespace 記帳.Models
     public class DataModel
     {
 
-        public static List<string> Purpose = new List<string>() { "食", "衣", "育樂", "行" };
+        public static List<string> Type = new List<string>() { "食", "衣", "育樂", "行" };
 
         public static List<string> Object = new List<string>() { "自用", "送禮", "代訂" };
 

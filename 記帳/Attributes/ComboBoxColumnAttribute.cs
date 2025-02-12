@@ -8,10 +8,15 @@ namespace 記帳.Attributes
 {
     public class ComboBoxColumnAttribute : Attribute
     {
-        public int Index = 0;
-        public ComboBoxColumnAttribute(int index)
+        public string _source;
+        public ComboBoxColumnAttribute(string source)
         {
-            this.Index = index;
+            this._source = source;
+        }
+
+        public ComboBoxColumnAttribute(List<string> DataSource)
+        {
+
         }
     }
 }

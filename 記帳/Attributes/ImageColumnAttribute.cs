@@ -8,10 +8,10 @@ namespace 記帳.Attributes
 {
     internal class ImageColumnAttribute : Attribute
     {
-        public int Index = 0;
-        public ImageColumnAttribute(int index)
+
+        public ImageColumnAttribute()
         {
-            this.Index = index;
+
         }
     }
 }

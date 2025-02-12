@@ -16,28 +16,25 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Diagnostics;
+using static 記帳.Contract.記一筆Contract;
+using 記帳.Presenter;
+using static 記帳.Contract.UploadImageContract;
 namespace 記帳.Forms
 {
-    public partial class 記一筆 : Form
+    public partial class 記一筆 : Form, 記一筆IView, UploadImageIView
     {
+        private 記一筆IPresenter _presenter;
+        private UploadImageIPresenter _uploadPresenter;
         public 記一筆()
         {
             InitializeComponent();
+            _presenter = new 記一筆Presenter(this);
+            _uploadPresenter = new UploadImagePresenter(this);
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            記帳本 記帳本 = new 記帳本();
-            記帳本.Show();
-
-            this.Hide();
-        }
-
         private void 記一筆_Load(object sender, EventArgs e)
         {
 
-            comboBox1.DataSource = DataModel.Purpose;
-
+            comboBox1.DataSource = DataModel.Type;
             comboBox3.DataSource = DataModel.Object;
             comboBox4.DataSource = DataModel.PaymentMethod;
 
@@ -71,23 +68,8 @@ namespace 記帳.Forms
                 {
                     Directory.CreateDirectory(Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date));
                 }
-                string pngName1_Path = Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, $"{Guid.NewGuid().ToString()}.png");
-                string pngName2_Path = Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, $"{Guid.NewGuid().ToString()}.png");
-                string pngName3_Path = Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, $"{Guid.NewGuid().ToString()}.png");
-                string pngName4_Path = Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, $"{Guid.NewGuid().ToString()}.png");
-                pictureBox1.Image.Save(pngName1_Path);
-                pictureBox2.Image.Save(pngName2_Path);
-                Bitmap image = new Bitmap(pictureBox1.Image, 30, 30);
-                Bitmap image2 = new Bitmap(pictureBox2.Image, 30, 30);
+                _presenter.saveData(recordModel, pictureBox1.Image, pictureBox2.Image);
 
-                image.Save(pngName3_Path);
-                image2.Save(pngName4_Path);
-                recordModel.PictureAddress1 = pngName1_Path;
-                recordModel.PictureAddress2 = pngName2_Path;
-                recordModel.resizedPictureAddress1 = pngName3_Path;
-                recordModel.resizedPictureAddress2 = pngName4_Path;
-
-                CSV.Write<RecordModel>(Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, "記帳.csv"), recordModel);
                 Reset();
 
             });
@@ -135,22 +117,8 @@ namespace 記帳.Forms
             if (result == DialogResult.OK)
             {
                 pictureAddress = openFileDialog.FileName;
-                System.Drawing.Image compressed = ImageCompressionUtility.CompressAndSaveImage(pictureAddress, 10L);
-                System.Drawing.Image compressed2 = ImageCompressionUtility.CompressAndSaveImage(pictureAddress, 10L);
-                //compressed.Save("C:\\Users\\TUF\\source\\repos\\test123.jpg");
+                _uploadPresenter.CompressImageRequest(pictureAddress);
 
-                //compressed2.Save("C:\\Users\\TUF\\source\\repos\\test123.jpg");
-
-                pictureBox1.Image = compressed;
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox2.Image = compressed2;
-                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-                //compressed?.Dispose();
-                //compressed = null;
-                //compressed2?.Dispose();
-                //compressed2 = null;
-
-                //pictureBox1.Image.Save("test.jpg");
             }
 
             openFileDialog.Dispose();
@@ -162,5 +130,14 @@ namespace 記帳.Forms
             //Console.WriteLine($"Total memory used by process: {Process.GetCurrentProcess().WorkingSet64 / 1024 / 1024} MB");
         }
 
+
+
+        public void CompressResponse(Image compressImage)
+        {
+            pictureBox1.Image = compressImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.Image = compressImage;
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
     }
 }

@@ -56,7 +56,11 @@
     <Compile Include="Attributes\ComboBoxColumnAttribute.cs" />
     <Compile Include="Attributes\HideAttribute.cs" />
     <Compile Include="Attributes\ImageColumnAttribute.cs" />
-    <Compile Include="Extension.cs" />
+    <Compile Include="Contract\BookKeepingContract.cs" />
+    <Compile Include="Contract\UploadImageContract.cs" />
+    <Compile Include="Contract\記一筆Contract.cs" />
+    <Compile Include="ExtensionFile\DataGridViewExtension.cs" />
+    <Compile Include="ExtensionFile\Extension.cs" />
     <Compile Include="FormBox.cs" />
     <Compile Include="Forms\PictureDialog.cs">
       <SubType>Form</SubType>
@@ -91,6 +95,9 @@
     <Compile Include="NavBar.Designer.cs">
       <DependentUpon>NavBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\BookKeepingPresenter.cs" />
+    <Compile Include="Presenter\UploadImagePresenter.cs" />
+    <Compile Include="Presenter\記一筆Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\帳本分析.cs">
@@ -100,6 +107,7 @@
       <DependentUpon>帳本分析.cs</DependentUpon>
     </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="Utility\SetDataGirdView.cs" />
     <EmbeddedResource Include="Forms\PictureDialog.resx">
       <DependentUpon>PictureDialog.cs</DependentUpon>
     </EmbeddedResource>

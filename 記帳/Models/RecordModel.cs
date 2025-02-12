@@ -9,7 +9,7 @@ using 記帳.Attributes;
 
 namespace 記帳.Models
 {
-    internal class RecordModel
+    public class RecordModel
     {
         [DisplayName("日期")]
         public string Date { get; set; }
@@ -18,12 +18,12 @@ namespace 記帳.Models
         public string Price { get; set; }
 
         [DisplayName("類型")]
-        [ComboBoxColumn(2)]
+        [ComboBoxColumn("")]
         //[Hide]
         public string Type { get; set; }
 
         [DisplayName("目的")]
-        [ComboBoxColumn(3)]
+        [ComboBoxColumn("Type")]
         //[Hide]
         public string Purpose { get; set; }
         //4,5
@@ -39,9 +39,9 @@ namespace 記帳.Models
         [DisplayName("圖片2")]
         [Hide]
         public string PictureAddress2 { get; set; }//7
-        [ImageColumn(6)]
+        [ImageColumn]
         public string resizedPictureAddress1 { get; set; }//8
-        [ImageColumn(7)]
+        [ImageColumn]
         public string resizedPictureAddress2 { get; set; }//9
 
 
