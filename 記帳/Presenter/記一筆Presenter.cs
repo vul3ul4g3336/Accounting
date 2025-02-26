@@ -9,10 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 記帳.Models;
+using 記帳.Repositary;
 using static 記帳.Contract.記一筆Contract;
 
 namespace 記帳.Presenter
 {
+
     internal class 記一筆Presenter : 記一筆IPresenter
     {
         private 記一筆IView _view;
@@ -39,8 +41,8 @@ namespace 記帳.Presenter
             recordModel.PictureAddress2 = pngName2_Path;
             recordModel.resizedPictureAddress1 = pngName3_Path;
             recordModel.resizedPictureAddress2 = pngName4_Path;
-
-            CSV.Write<RecordModel>(Path.Combine(ConfigurationManager.AppSettings["DirectoryPath"], recordModel.Date, "記帳.csv"), recordModel);
+            IRepository repositary = new CSV_Repository();
+            repositary.SaveRecord(recordModel);
         }
     }
 

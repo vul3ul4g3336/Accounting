@@ -49,20 +49,22 @@ namespace 記帳.Forms
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             _bookKeepingPresenter.CellDoubleClick(dataGridView1, e.ColumnIndex, e.RowIndex);
-
-
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             _bookKeepingPresenter.EditData(dataGridView1, e.ColumnIndex, e.RowIndex);
-            
-
         }
 
         public void search_Response(DataGridView dataGridView)
         {
             dataGridView1 = dataGridView;
+        }
+
+        public void showPicTure(string URL)
+        {
+            PictureDialog pictureDialog = new PictureDialog(URL);
+            pictureDialog.ShowDialog();
         }
     }
 }

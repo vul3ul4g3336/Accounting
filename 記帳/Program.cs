@@ -16,7 +16,7 @@ namespace 記帳
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form form = FormBox.GetForm("記帳本");
+            Form form = FormBox.GetForm("帳本分析");
             Application.Run(form);
 
         }

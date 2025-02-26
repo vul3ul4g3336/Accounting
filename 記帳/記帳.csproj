@@ -56,6 +56,7 @@
     <Compile Include="Attributes\ComboBoxColumnAttribute.cs" />
     <Compile Include="Attributes\HideAttribute.cs" />
     <Compile Include="Attributes\ImageColumnAttribute.cs" />
+    <Compile Include="Contract\AccountAnalysisContract.cs" />
     <Compile Include="Contract\BookKeepingContract.cs" />
     <Compile Include="Contract\UploadImageContract.cs" />
     <Compile Include="Contract\記一筆Contract.cs" />
@@ -87,6 +88,7 @@
       <DependentUpon>記帳本.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageCompressionUtility.cs" />
+    <Compile Include="Models\AnalysisModel.cs" />
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="NavBar.cs">
@@ -95,6 +97,7 @@
     <Compile Include="NavBar.Designer.cs">
       <DependentUpon>NavBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\AccountAnalysisPresenter.cs" />
     <Compile Include="Presenter\BookKeepingPresenter.cs" />
     <Compile Include="Presenter\UploadImagePresenter.cs" />
     <Compile Include="Presenter\記一筆Presenter.cs" />
@@ -106,6 +109,8 @@
     <Compile Include="Forms\帳本分析.Designer.cs">
       <DependentUpon>帳本分析.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repositary\CSV_Repository.cs" />
+    <Compile Include="Repositary\IRepository.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Utility\SetDataGirdView.cs" />
     <EmbeddedResource Include="Forms\PictureDialog.resx">

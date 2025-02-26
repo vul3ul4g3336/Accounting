@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 記帳.Models;
 
 namespace 記帳.Contract
 {
@@ -12,6 +13,7 @@ namespace 記帳.Contract
         public interface BookKeepingIView
         {
             void search_Response(DataGridView dataGridView);
+            void showPicTure(string URL);
         }
         public interface BookKeepingIPresenter
         {
@@ -23,7 +25,7 @@ namespace 記帳.Contract
             void CellDoubleClick(DataGridView dataGridView, int columnIndex, int rowIndex);
 
 
-        }
 
+        }
     }
 }
