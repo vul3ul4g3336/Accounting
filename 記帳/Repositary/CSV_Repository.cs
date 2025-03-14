@@ -18,6 +18,8 @@ namespace 記帳.Repositary
             var records = GetRawData(dateTime1, dateTime2);
             List<AnalysisModel> datas = records.Select(x => new AnalysisModel
             {
+                //startDate = dateTime1.ToString(),
+                //endDate = dateTime2.ToString(),
                 Type = x.Type,
                 PayMethod = x.PayMethod,
                 Target = x.Target,
@@ -35,6 +37,8 @@ namespace 記帳.Repositary
                        .Where(x => payMethodFilter.Count > 0 ? payMethodFilter.Contains(x.Key.PayMethod) : true)
                        .Select(x => new AnalysisModel
                        {
+                           //startDate = dateTime1.ToString(),
+                           //endDate = dateTime2.ToString(),
                            Type = x.Key.Type,
                            Target = x.Key.Target,
                            PayMethod = x.Key.PayMethod,
@@ -87,6 +91,48 @@ namespace 記帳.Repositary
             // 刪除的資料 A
         }
 
+        public ChartModel GetTimeRangeData(DateTime dateTime1, DateTime dateTime2)
+        {
+            ChartModel chartModel = new ChartModel();
+            var records = GetRawData(dateTime1, dateTime2);
+            List<AnalysisModel> datas = records.Select(x => new AnalysisModel
+            {
+                //startDate = dateTime1.ToString(),
+                //endDate = dateTime2.ToString(),
+                Type = x.Type,
+                Price = x.Price
+            }).ToList();
+            chartModel.NowadaysModel = datas;
+            DateTime lastMonthOfdateTime1 = dateTime1.AddMonths(-1);
+            DateTime lastMonthOfdateTime2 = dateTime2.AddMonths(-1);
+            records = GetRawData(lastMonthOfdateTime1, lastMonthOfdateTime2);
 
+            List<AnalysisModel> datas2 = records.Select(x => new AnalysisModel
+            {
+                //startDate = dateTime1.ToString(),
+                //endDate = dateTime2.ToString(),                
+                Type = x.Type,
+                Price = x.Price
+            }).ToList();
+
+            chartModel.formerModel = datas2;
+            return chartModel;
+        }
+
+        public List<StackChartModel> GetStackData(DateTime dateTime1, DateTime dateTime2)
+        {
+
+            var records = GetRawData(dateTime1, dateTime2);
+            List<StackChartModel> datas = records.Select(x => new StackChartModel
+            {
+                //startDate = dateTime1.ToString(),
+                //endDate = dateTime2.ToString(),
+                Date = x.Date,
+                Type = x.Type,
+                Price = x.Price
+            }).ToList();
+
+            return datas;
+        }
     }
 }

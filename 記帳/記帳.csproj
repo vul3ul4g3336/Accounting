@@ -40,6 +40,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,15 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChartBuilder.cs" />
     <Compile Include="Attributes\AddressAttribute.cs" />
     <Compile Include="Attributes\AttributeType.cs" />
     <Compile Include="Attributes\ComboBoxColumnAttribute.cs" />
     <Compile Include="Attributes\HideAttribute.cs" />
     <Compile Include="Attributes\ImageColumnAttribute.cs" />
+    <Compile Include="ChartFactory\AChart.cs" />
+    <Compile Include="ChartFactory\LineChart.cs" />
+    <Compile Include="ChartFactory\PieChart.cs" />
+    <Compile Include="ChartFactory\StackedChart.cs" />
     <Compile Include="Contract\AccountAnalysisContract.cs" />
     <Compile Include="Contract\BookKeepingContract.cs" />
+    <Compile Include="Contract\ChartAnalysis_Contract.cs" />
     <Compile Include="Contract\UploadImageContract.cs" />
     <Compile Include="Contract\記一筆Contract.cs" />
+    <Compile Include="Enums\ChartEnum.cs" />
     <Compile Include="ExtensionFile\DataGridViewExtension.cs" />
     <Compile Include="ExtensionFile\Extension.cs" />
     <Compile Include="FormBox.cs" />
@@ -89,8 +97,10 @@
     </Compile>
     <Compile Include="ImageCompressionUtility.cs" />
     <Compile Include="Models\AnalysisModel.cs" />
+    <Compile Include="Models\ChartModel.cs" />
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\RecordModel.cs" />
+    <Compile Include="Models\StackChartModel.cs" />
     <Compile Include="NavBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,6 +109,7 @@
     </Compile>
     <Compile Include="Presenter\AccountAnalysisPresenter.cs" />
     <Compile Include="Presenter\BookKeepingPresenter.cs" />
+    <Compile Include="Presenter\ChartAnalysis_Presenter.cs" />
     <Compile Include="Presenter\UploadImagePresenter.cs" />
     <Compile Include="Presenter\記一筆Presenter.cs" />
     <Compile Include="Program.cs" />

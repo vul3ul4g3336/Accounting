@@ -32,10 +32,6 @@ namespace 記帳.Forms
             _accountAnalysisPresenter = new AccountAnalysisPresenter(this);
         }
 
-        public void search_Response(DataGridView dataGridView)
-        {
-            dataGridView1 = dataGridView;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {

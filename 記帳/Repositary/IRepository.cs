@@ -9,7 +9,8 @@ namespace 記帳.Repositary
 {
     public interface IRepository
     {
-
+        List<StackChartModel> GetStackData(DateTime dateTime1, DateTime dateTime2);
+        ChartModel GetTimeRangeData(DateTime dateTime1, DateTime dateTime2);
         List<RecordModel> GetRawData(DateTime dateTime1, DateTime dateTime2);
 
         List<AnalysisModel> GetClassificationData(DateTime dateTime1, DateTime dateTime2,
@@ -21,5 +22,7 @@ namespace 記帳.Repositary
 
 
         bool DeleteData(string Date);
+
+
     }
 }
